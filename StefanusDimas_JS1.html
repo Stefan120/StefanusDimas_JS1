@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!-- if else -->
+<p id="ifelse"></p>
+<script>
+const waktu = new Date().getHours();
+let Salam;
+if (waktu < 10) {
+  Salam = "Good morning";
+} else if (waktu < 20) {
+  Salam = "Good day";
+} else {
+  Salam = "Good evening";
+}
+document.getElementById("ifelse").innerHTML = Salam;
+</script>
+<br>
+<!-- Nested if -->
+<h1>Periksa Kualifikasi Pendaftar</h1>
+<p>Silakan isi informasi pendaftaran:</p>
+
+  <form id="registrationForm">
+    <label for="umur">Umur:</label>
+    <input type="number" id="umur" name="umur"><br><br>
+
+    <label for="nilai">Nilai Ujian:</label>
+    <input type="number" id="nilai" name="nilai"><br><br>
+
+    <button type="button" onclick="periksaKualifikasi()">Periksa Kualifikasi</button>
+  </form>
+
+  <p id="hasilPemeriksaan"></p>
+
+<script>
+  function periksaKualifikasi() {
+      const umur = parseInt(document.getElementById("umur").value);
+      const nilai = parseInt(document.getElementById("nilai").value);
+
+      if (umur >= 18) {
+        if (nilai >= 70) {
+          document.getElementById("hasilPemeriksaan").textContent = "Anda lulus!";
+        } else {
+          document.getElementById("hasilPemeriksaan").textContent = "Anda tidak lulus, nilai Anda terlalu rendah.";
+        }
+      } else {
+        document.getElementById("hasilPemeriksaan").textContent = "Anda tidak lulus, Anda belum cukup umur.";
+      }
+    }
+</script>
+<br>
+<!-- Switch Case -->
+<h1>Pilih Warna</h1>
+<p>Pilih warna favorit Anda:</p>
+
+<select id="pilihanWarna" onchange="ubahWarna()">
+  <option value="merah">Merah</option>
+  <option value="biru">Biru</option>
+  <option value="hijau">Hijau</option>
+</select>
+
+<p id="hasilPilihanWarna">Warna favorit Anda akan muncul di sini.</p>
+
+<script>
+  function ubahWarna() {
+    const pilihanWarna = document.getElementById("pilihanWarna");
+    const hasilPilihanWarna = document.getElementById("hasilPilihanWarna");
+    const selectedColor = pilihanWarna.value;
+
+    switch (selectedColor) {
+      case "merah":
+        hasilPilihanWarna.innerHTML = "Anda memilih <span style='color: red;'>Merah</span>.";
+        break;
+      case "biru":
+        hasilPilihanWarna.innerHTML = "Anda memilih <span style='color: blue;'>Biru</span>.";
+        break;
+      case "hijau":
+        hasilPilihanWarna.innerHTML = "Anda memilih <span style='color: green;'>Hijau</span>.";
+        break;
+      default:
+        hasilPilihanWarna.innerHTML = "Anda belum memilih warna.";
+    }
+  }
+</script>
+<br>
+
+<!-- for statement -->
+<h1>Daftar Angka</h1>
+  <p>Daftar angka dari 1 hingga 5:</p>
+
+  <div id="pilihangka"></div>
+
+  <script>
+    let hasil = "";
+
+    for (let i = 1; i <= 5; i++) {
+      hasil += i + "<br>";
+    }
+
+    document.getElementById("pilihangka").innerHTML = hasil;
+  </script>
+  <br>
+
+  <!-- While, do while -->
+  <h1>Perulangan do...while</h1>
+  <p>Perulangan do...while yang menghasilkan angka dari 1 hingga 5:</p>
+
+
+  <div id="hasilPerulanganDoWhile"></div>
+
+  <script>
+    // Membuat variabel untuk menampung hasil
+    let hasilWhile = "";
+    let hasilDoWhile = "";
+    
+    // Inisialisasi variabel penghitung
+    let i = 1;
+    
+    // Perulangan while
+    while (i <= 5) {
+      // Menambahkan angka ke dalam variabel hasilWhile
+      hasilWhile += i + "<br>";
+      i++;
+    }
+
+    // Menetapkan isi div dengan id "hasilPerulanganWhile" menggunakan innerHTML
+    document.getElementById("hasilPerulanganWhile").innerHTML = hasilWhile;
+
+    // Mengatur ulang variabel penghitung untuk perulangan do...while
+    i = 1;
+
+    // Perulangan do...while
+    do {
+      // Menambahkan angka ke dalam variabel hasilDoWhile
+      hasilDoWhile += i + "<br>";
+      i++;
+    } while (i <= 5);
+
+    // Menetapkan isi div dengan id "hasilPerulanganDoWhile" menggunakan innerHTML
+    document.getElementById("hasilPerulanganDoWhile").innerHTML = hasilDoWhile;
+  </script>
+  <br>
+  <!-- function -->
+  <p>Klik tombol untuk memanggil function:</p>
+
+  <button id="tombol">Klik ini</button>
+
+  <p id="hasil"></p>
+
+  <script>
+    document.getElementById("tombol").addEventListener("click", function() {
+      document.getElementById("hasil").innerHTML = "Halo, sayang!";
+    });
+  </script>
+
+</body>
+</html>
